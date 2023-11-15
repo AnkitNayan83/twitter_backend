@@ -25,6 +25,9 @@ export const getSingleUser = async (req: Request, res: Response) => {
         const { id } = req.params;
         const user = await prisma.user.findUnique({
             where: { id: Number(id) },
+            include: {
+                tweet: true,
+            },
         });
         res.status(200).json({
             success: true,

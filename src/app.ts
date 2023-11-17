@@ -2,10 +2,12 @@ import express from "express";
 import userRoutes from "./routes/userRoutes";
 import tweetRoutes from "./routes/tweetRoutes";
 import authRoutes from "./routes/authRoutes";
+import env from "dotenv";
 
 const app = express();
 const port = 5000;
 
+env.config();
 app.use(express.json());
 
 //routes

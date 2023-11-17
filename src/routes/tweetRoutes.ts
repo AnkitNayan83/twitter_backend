@@ -6,12 +6,13 @@ import {
     getSingleTweet,
     updateTweet,
 } from "../controller/tweetController";
+import { authenticateToken } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
-router.post("/create", createTweet);
-router.put("/update", updateTweet);
-router.delete("/deleteUser", deleteTweet);
+router.post("/create", authenticateToken, createTweet);
+router.put("/:id", authenticateToken, updateTweet);
+router.delete("/:id", authenticateToken, deleteTweet);
 router.get("/", getAllTweet);
 router.get("/:id", getSingleTweet);
 

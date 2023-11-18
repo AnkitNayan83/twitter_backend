@@ -1,5 +1,4 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-// import AWS from "aws-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -32,7 +31,6 @@ function createEmailCommand(toAddress: string, fromAddress: string, message: str
 export async function sendEmail(email: string, token: string) {
     const message = `Your onr time password is ${token}`;
     const command = createEmailCommand(email, ROOT_EMAIL, message);
-    ses.config.region();
     try {
         return await ses.send(command);
     } catch (error) {

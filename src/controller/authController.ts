@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
+import { sendEmail } from "../services/emailService";
 
 const prisma = new PrismaClient();
 const EMAIL_TOKEN_EXPIRATION_MINUTES = 10;
@@ -42,7 +43,7 @@ export const userLogin = async (req: Request, res: Response) => {
                 },
             },
         });
-        console.log(newToken);
+        await sendEmail(email, emailOTP);
         res.sendStatus(200);
     } catch (error) {
         console.log(error);

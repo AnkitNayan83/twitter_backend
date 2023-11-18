@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.454.0",
     "@prisma/client": "^5.5.2",
     "express": "^4.18.2"
   },
